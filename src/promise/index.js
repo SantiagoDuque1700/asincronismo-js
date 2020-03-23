@@ -1,0 +1,36 @@
+const somethingWillHappen = () =>{
+    return new Promise((resolve,reject) =>{
+        if(true){
+            resolve('Hey!')
+        }else{
+            reject('Whoops!')
+        }
+    })
+}
+
+somethingWillHappen()
+    .then(response => console.log(response))
+    .catch(error => console.error(error))
+
+const somethingWillHappen2 = () =>{
+    return new Promise((resolve,reject) => {
+        if(true){
+            resolve('True')
+        }else{
+            const error = new Error('Whoop!')
+            reject(error)
+        }
+    })
+}
+
+somethingWillHappen2()
+    .then(response => console.log(response))
+    .catch(error => console.error(error))
+
+Promise.all([somethingWillHappen(),somethingWillHappen2()])
+    .then(response =>{
+        console.log('Array of results',response)
+    })
+    .catch(error => {
+        console.error(error)
+    })
